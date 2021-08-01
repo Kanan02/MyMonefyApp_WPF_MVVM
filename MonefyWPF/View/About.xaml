@@ -1,0 +1,71 @@
+﻿<Window x:Class="MonefyWPF.View.About"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MonefyWPF.View"
+        mc:Ignorable="d"
+        Title="About" Height="500" Width="350" FontSize="17" FontFamily="Comic Sans MS" Background="{Binding Background}">
+    <Window.InputBindings>
+        <KeyBinding Key="D" Modifiers="Ctrl" Command="{Binding DayCommand}"></KeyBinding>
+        <KeyBinding Key="M" Modifiers="Ctrl" Command="{Binding MonthCommand}"></KeyBinding>
+        <KeyBinding Key="Y" Modifiers="Ctrl" Command="{Binding YearCommand}"></KeyBinding>
+        <KeyBinding Key="A" Modifiers="Ctrl" Command="{Binding AllCommand}"></KeyBinding>
+        <KeyBinding Key="C" Modifiers="Alt" Command="{Binding ChangeDarkModeCommand}"></KeyBinding>
+        <KeyBinding Key="A" Modifiers="Alt" Command="{Binding AZECommand}"></KeyBinding>
+        <KeyBinding Key="U" Modifiers="Alt" Command="{Binding USDCommand}"></KeyBinding>
+        <KeyBinding Key="R" Modifiers="Alt" Command="{Binding RUBCommand}"></KeyBinding>
+    </Window.InputBindings>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="6*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Background="{Binding PanelColor}">
+            <Label Foreground="White" HorizontalAlignment="Center" FontSize="20" VerticalAlignment="Center">Welcome to MyMonefy App</Label>
+        </Grid>
+        <Grid Grid.Row="1">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.8*"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="4*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Background="{Binding PanelColor}">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label  Foreground="White" HorizontalAlignment="Center">This app can easily help you control </Label>
+                <Label  Foreground="White" Grid.Row="1" HorizontalAlignment="Center">all your incomes and expenses!</Label>
+            </Grid>
+            <Label Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">Here are some hotkeys:</Label>
+            <ListBox Grid.Row="2" FontSize="14">
+                <ListBoxItem HorizontalAlignment="Center">
+                    <TextBlock>CTRL+D -> All transactions during the day</TextBlock>
+                </ListBoxItem>
+                <ListBoxItem HorizontalAlignment="Center">
+                    <TextBlock>CTRL+M -> All transactions during the month</TextBlock>
+                </ListBoxItem>
+                <ListBoxItem HorizontalAlignment="Center">
+                    <TextBlock>CTRL+Y -> All transactions during the year</TextBlock>
+                </ListBoxItem>
+                <ListBoxItem HorizontalAlignment="Center">
+                    <TextBlock>CTRL+A -> All transactions during all the time</TextBlock>
+                </ListBoxItem>
+                <ListBoxItem HorizontalAlignment="Center">
+                    <TextBlock>ALT+C -> Changes design mode</TextBlock>
+                </ListBoxItem>
+                <ListBoxItem HorizontalAlignment="Center">
+                    <TextBlock>ALT+U -> Shows amount in USD currency</TextBlock>
+                </ListBoxItem>
+                <ListBoxItem HorizontalAlignment="Center">
+                    <TextBlock>ALT+R -> Shows amount in RUB currency</TextBlock>
+                </ListBoxItem>
+                <ListBoxItem HorizontalAlignment="Center">
+                    <TextBlock>ALT+A -> Shows amount in AZE currency</TextBlock>
+                </ListBoxItem>
+            </ListBox>
+        </Grid>
+    </Grid>
+</Window>

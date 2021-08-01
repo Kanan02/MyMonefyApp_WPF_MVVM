@@ -1,0 +1,119 @@
+﻿<Window x:Class="MonefyWPF.View.Transactions"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MonefyWPF.View"
+        mc:Ignorable="d"
+        Title="Transactions" Height="600" Width="1000" FontFamily="Comic Sans MS" Background="{Binding Background}"  FontSize="25" >
+    <Window.InputBindings>
+        <KeyBinding Key="D" Modifiers="Ctrl" Command="{Binding DayCommand}"></KeyBinding>
+        <KeyBinding Key="M" Modifiers="Ctrl" Command="{Binding MonthCommand}"></KeyBinding>
+        <KeyBinding Key="Y" Modifiers="Ctrl" Command="{Binding YearCommand}"></KeyBinding>
+        <KeyBinding Key="A" Modifiers="Ctrl" Command="{Binding AllCommand}"></KeyBinding>
+        <KeyBinding Key="C" Modifiers="Alt" Command="{Binding ChangeDarkModeCommand}"></KeyBinding>
+        <KeyBinding Key="A" Modifiers="Alt" Command="{Binding AZECommand}"></KeyBinding>
+        <KeyBinding Key="U" Modifiers="Alt" Command="{Binding USDCommand}"></KeyBinding>
+        <KeyBinding Key="R" Modifiers="Alt" Command="{Binding RUBCommand}"></KeyBinding>
+    </Window.InputBindings>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="5*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0" Grid.Column="0" Background="#FF8E8E">
+            <Label HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" >Expenses</Label>
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="1" Background="#8AFFA2">
+            <Label HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" >Incomes</Label>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="0" >
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="7*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock FontSize="24">
+                  <Run Text="Amount in " ></Run>
+                  <Run Text="{Binding Currency}"></Run>
+                
+                  <Run Text="|Date|"></Run>
+                  <Run Text="Note|"></Run>
+                  <Run Text="Category|"></Run>
+            </TextBlock>
+            <ListBox x:Name="listBox1" Grid.Row="1" ItemsSource="{Binding ExpensesList,UpdateSourceTrigger=PropertyChanged}">
+            
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                   
+                    <StackPanel Orientation="Horizontal">
+                       
+                        <TextBlock FontSize="20">
+                            <Run Text="{Binding Amount,Mode=OneWay}" ></Run>
+                            <Run>|</Run>
+                            <Run Text="{Binding Date,Mode=OneWay}"></Run>
+                            <Run>|</Run>
+                            <Run Text="{Binding Note,Mode=OneTime}"></Run>
+                            <Run>|</Run>
+                            <Run Text="{Binding CategoryName,Mode=OneTime}"></Run>
+                            <Run>|</Run>
+                        </TextBlock>
+                        
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="1" >
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="7*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock FontSize="24">
+                  <Run Text="Amount in " ></Run>
+                  <Run Text="{Binding Currency}"></Run>
+                  <Run Text="|Date|"></Run>
+                  <Run Text="Note|"></Run>
+            </TextBlock>
+            <ListBox x:Name="listBox2" Grid.Row="1" ItemsSource="{Binding IncomesList,UpdateSourceTrigger=PropertyChanged}">
+
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+
+                        <StackPanel Orientation="Horizontal">
+
+                            <TextBlock FontSize="20">
+                                <Run Text="{Binding Value,Mode=OneWay}" ></Run>
+                                <Run>|</Run>
+                                <Run Text="{Binding Date,Mode=OneWay}"></Run>
+                                <Run>|</Run>
+                                <Run Text="{Binding Note,Mode=OneTime}"></Run>
+                                <Run>|</Run>
+                            </TextBlock>
+
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="0.5*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label HorizontalAlignment="Center" VerticalAlignment="Center">Sort by:</Label>
+            <Button Command="{Binding AmountSortCommand}" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" Grid.Column="2" Style="{StaticResource GreenButton}">Amount</Button>
+            <Button Command="{Binding DateSortCommand}" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave"   Grid.Column="4" Style="{StaticResource RedButton}">Date</Button>
+            
+        </Grid>
+    </Grid>
+</Window>

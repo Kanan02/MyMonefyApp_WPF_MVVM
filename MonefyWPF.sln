@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31402.337
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonefyWPF", "MonefyWPF\MonefyWPF.csproj", "{7FA37C6C-5A4E-48FB-8A00-FC0CFE66796A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7FA37C6C-5A4E-48FB-8A00-FC0CFE66796A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FA37C6C-5A4E-48FB-8A00-FC0CFE66796A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FA37C6C-5A4E-48FB-8A00-FC0CFE66796A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FA37C6C-5A4E-48FB-8A00-FC0CFE66796A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {87EEB50F-2091-4447-8D86-80EAAF07683C}
+	EndGlobalSection
+EndGlobal

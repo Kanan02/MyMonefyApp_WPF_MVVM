@@ -1,0 +1,78 @@
+﻿<Window x:Class="MonefyWPF.View.ChooseCategory"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MonefyWPF.View"
+        mc:Ignorable="d"
+        Title="ChooseCategory" Height="350" Width="300" Background="{Binding Background}">
+    <Window.InputBindings>
+        <KeyBinding Key="D" Modifiers="Ctrl" Command="{Binding DayCommand}"></KeyBinding>
+        <KeyBinding Key="M" Modifiers="Ctrl" Command="{Binding MonthCommand}"></KeyBinding>
+        <KeyBinding Key="Y" Modifiers="Ctrl" Command="{Binding YearCommand}"></KeyBinding>
+        <KeyBinding Key="A" Modifiers="Ctrl" Command="{Binding AllCommand}"></KeyBinding>
+        <KeyBinding Key="C" Modifiers="Alt" Command="{Binding ChangeDarkModeCommand}"></KeyBinding>
+        <KeyBinding Key="A" Modifiers="Alt" Command="{Binding AZECommand}"></KeyBinding>
+        <KeyBinding Key="U" Modifiers="Alt" Command="{Binding USDCommand}"></KeyBinding>
+        <KeyBinding Key="R" Modifiers="Alt" Command="{Binding RUBCommand}"></KeyBinding>
+    </Window.InputBindings>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="0.1*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="0.1*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="0.1*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="0.1*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.1*"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="0.1*"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="0.1*"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="0.1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="Phone" Click="Button_Click"  MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave"  Grid.Column="1" Grid.Row="1" Background="White" HorizontalAlignment="Center" BorderThickness="0">
+            <Image Source="pack://application:,,,/View/images/phone.png"></Image>
+        </Button>
+        <Button x:Name="Transport" Click="Button_Click"  MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" Grid.Column="3" Grid.Row="1" Background="White" HorizontalAlignment="Center" BorderThickness="0">
+            <Image Source="pack://application:,,,/View/images/transport.png"></Image>
+        </Button>
+        <Button x:Name="House" Click="Button_Click"  MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" Grid.Column="5" Grid.Row="1" Background="White" HorizontalAlignment="Center" BorderThickness="0">
+            <Image Source="pack://application:,,,/View/images/house.png"></Image>
+        </Button>
+        <Button x:Name="Car" Click="Button_Click"  MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" Grid.Column="1" Grid.Row="3" Background="White" HorizontalAlignment="Center" BorderThickness="0">
+            <Image Source="pack://application:,,,/View/images/car.png"></Image>
+        </Button>
+
+        <Button x:Name="Entertainment" Click="Button_Click"  MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" Grid.Column="3" Grid.Row="3" Background="White" HorizontalAlignment="Center" BorderThickness="0">
+            <Image Source="pack://application:,,,/View/images/entertainment.png"></Image>
+        </Button>
+        <Button x:Name="Taxi" Click="Button_Click"  MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" Grid.Column="5" Grid.Row="3" Background="White" HorizontalAlignment="Center" BorderThickness="0">
+            <Image Source="pack://application:,,,/View/images/taxi.png"></Image>
+        </Button>
+        <Button x:Name="Clothes" Click="Button_Click"  MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" Grid.Column="1" Grid.Row="5" Background="White" HorizontalAlignment="Center" BorderThickness="0">
+            <Image Source="pack://application:,,,/View/images/clothes.png"></Image>
+        </Button>
+        <Button x:Name="Health" Click="Button_Click"  MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" Grid.Column="3" Grid.Row="5" Background="White" HorizontalAlignment="Center" BorderThickness="0">
+            <Image Source="pack://application:,,,/View/images/health.png"></Image>
+        </Button>
+        <Button x:Name="Sport" Click="Button_Click"  MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" Grid.Column="5" Grid.Row="5" Background="White" HorizontalAlignment="Center" BorderThickness="0">
+            <Image Source="pack://application:,,,/View/images/sport.png"></Image>
+        </Button>
+        <Button x:Name="Food" Click="Button_Click"  MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" Grid.Column="1" Grid.Row="7" Background="White" HorizontalAlignment="Center" BorderThickness="0">
+            <Image Source="pack://application:,,,/View/images/food.png"></Image>
+        </Button>
+        <Button x:Name="Toiletry" Click="Button_Click"  MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" Grid.Column="3" Grid.Row="7" Background="White" HorizontalAlignment="Center" BorderThickness="0">
+            <Image Source="pack://application:,,,/View/images/toiletry.png"></Image>
+        </Button>
+        <Button x:Name="Restaurants" Click="Button_Click"  MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" Grid.Column="5" Grid.Row="7" Background="White" HorizontalAlignment="Center" BorderThickness="0">
+            <Image Source="pack://application:,,,/View/images/restaurants.png"></Image>
+        </Button>
+    </Grid>
+</Window>

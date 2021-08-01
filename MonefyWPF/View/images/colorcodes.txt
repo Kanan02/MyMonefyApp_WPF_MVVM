@@ -1,0 +1,12 @@
+phone - #5BB883
+entertainment- #E05A47
+taxi - #FDD400
+clothes - #964850
+health - #648DAD
+sport - #952EB4
+food - #9CAF4E
+toiletry - #1E2452
+eating-out - #1B5032
+house - #38B6FF
+car - #801724
+transport - #DDA35F

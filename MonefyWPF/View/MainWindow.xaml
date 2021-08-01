@@ -1,0 +1,314 @@
+﻿<Window x:Class="MonefyWPF.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MonefyWPF.View"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        mc:Ignorable="d"
+        Title="MyMonefy"  Height="600" Width="1000" FontSize="17" FontFamily="Comic Sans MS" WindowState="Maximized" WindowStyle="None"
+     Background="{Binding Background,UpdateSourceTrigger=PropertyChanged}" >
+    <Window.InputBindings>
+        <KeyBinding Key="D" Modifiers="Ctrl" Command="{Binding DayCommand}"></KeyBinding>
+        <KeyBinding Key="M" Modifiers="Ctrl" Command="{Binding MonthCommand}"></KeyBinding>
+        <KeyBinding Key="Y" Modifiers="Ctrl" Command="{Binding YearCommand}"></KeyBinding>
+        <KeyBinding Key="A" Modifiers="Ctrl" Command="{Binding AllCommand}"></KeyBinding>
+        <KeyBinding Key="C" Modifiers="Alt" Command="{Binding ChangeDarkModeCommand}"></KeyBinding>
+        <KeyBinding Key="A" Modifiers="Alt" Command="{Binding AZECommand}"></KeyBinding>
+        <KeyBinding Key="U" Modifiers="Alt" Command="{Binding USDCommand}"></KeyBinding>
+        <KeyBinding Key="R" Modifiers="Alt" Command="{Binding RUBCommand}"></KeyBinding>
+    </Window.InputBindings>
+    <Grid>
+        
+        <Grid.RowDefinitions>
+
+            <RowDefinition Height="0.15*"></RowDefinition>
+            <RowDefinition Height="0.05*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="0.50*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="{Binding PanelColor}" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.6*"></ColumnDefinition>
+                <ColumnDefinition Width="3*"></ColumnDefinition>
+                <ColumnDefinition Width="0.6*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Content="Menu" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="25"  >
+                <Label.Triggers>
+                    <EventTrigger RoutedEvent="MouseEnter">
+                        <EventTrigger.Actions>
+                            <BeginStoryboard Name="menuOpenStoryBoard">
+                                <Storyboard >
+                                    <DoubleAnimation Storyboard.TargetName="myMenu" From="0" To="220"
+                                                      DecelerationRatio="1" Duration="0:0:0.3"
+                                                     Storyboard.TargetProperty="Width" />
+
+
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger.Actions>
+                    </EventTrigger>
+
+                </Label.Triggers>
+            </Label>
+            <Label Grid.Column="1" Foreground="White" HorizontalAlignment="Center" FontSize="30" VerticalAlignment="Center">MyMonefy</Label>
+            <Grid Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0"  Foreground="White" HorizontalAlignment="Center" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" FontSize="25" VerticalAlignment="Center" MouseUp="Label_MouseUp">About</Label>
+                <Label Grid.Column="1"  MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" Foreground="Red" FontSize="23" VerticalAlignment="Top" HorizontalAlignment="Right" MouseUp="Label_MouseUp">Exit</Label>
+            </Grid>
+        </Grid>
+        <Menu Width="0" Name="myMenu" HorizontalAlignment="Left" Grid.Row="1" Grid.RowSpan="2"  Background="{Binding PanelColor}">
+            <Menu.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel Orientation="Vertical"></VirtualizingStackPanel>
+                </ItemsPanelTemplate>
+            </Menu.ItemsPanel>
+            <MenuItem Header="Categories">
+                <MenuItem.Icon >
+                    <Image Source="pack://application:,,,/View/images/categories.png" Stretch="Fill"  />
+                </MenuItem.Icon>
+                <MenuItem  Header="Phone" Click="Button_Click">
+                    <MenuItem.Icon>
+                        <Image  Source="pack://application:,,,/View/images/phone.png" Stretch="Fill"  />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Transport" Click="Button_Click">
+                    <MenuItem.Icon>
+                        <Image  Source="pack://application:,,,/View/images/transport.png" Stretch="Fill"  />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="House" Click="Button_Click">
+                    <MenuItem.Icon>
+                        <Image  Source="pack://application:,,,/View/images/house.png" Stretch="Fill"  />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Car" Click="Button_Click">
+                    <MenuItem.Icon>
+                        <Image  Source="pack://application:,,,/View/images/car.png" Stretch="Fill"   />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Entertainment" Click="Button_Click">
+                    <MenuItem.Icon>
+                        <Image  Source="pack://application:,,,/View/images/entertainment.png" Stretch="Fill"  />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Taxi" Click="Button_Click">
+                    <MenuItem.Icon>
+                        <Image  Source="pack://application:,,,/View/images/taxi.png" Stretch="Fill"  />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Clothes" Click="Button_Click">
+                    <MenuItem.Icon>
+                        <Image  Source="pack://application:,,,/View/images/clothes.png" Stretch="Fill"  />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Health" Click="Button_Click">
+                    <MenuItem.Icon>
+                        <Image  Source="pack://application:,,,/View/images/health.png" Stretch="Fill"  />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Sport" Click="Button_Click">
+                    <MenuItem.Icon>
+                        <Image  Source="pack://application:,,,/View/images/sport.png" Stretch="Fill"  />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Food" Click="Button_Click">
+                    <MenuItem.Icon>
+                        <Image  Source="pack://application:,,,/View/images/food.png" Stretch="Fill"  />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Toiletry" Click="Button_Click">
+                    <MenuItem.Icon>
+                        <Image  Source="pack://application:,,,/View/images/toiletry.png" Stretch="Fill"  />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Restaurants" Click="Button_Click">
+                    <MenuItem.Icon>
+                        <Image  Source="pack://application:,,,/View/images/restaurants.png" Stretch="Fill"  />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="Settings">
+
+                <MenuItem.Icon >
+                    <Image  Source="pack://application:,,,/View/images/settings.png" Stretch="Fill"  />
+                </MenuItem.Icon>
+                <MenuItem Header="Dark Theme" IsCheckable="True" Command="{Binding ChangeDarkModeCommand}"></MenuItem>
+                <MenuItem Header="Currency">
+                    <MenuItem Header="USD" IsCheckable="True" IsChecked="True" Command="{Binding USDCommand}"></MenuItem>
+                    <MenuItem Header="AZN" IsCheckable="True" Command="{Binding AZECommand}"></MenuItem>
+                    <MenuItem Header="RUB" IsCheckable="True" Command="{Binding RUBCommand}"></MenuItem>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="TimePeriod">
+                <MenuItem.Icon >
+                    <Image  Source="pack://application:,,,/View/images/timeperiod.png" Stretch="Fill"  />
+                </MenuItem.Icon>
+                <MenuItem Header="Day" Command="{Binding DayCommand}"></MenuItem>
+                <MenuItem Header="Month" Command="{Binding MonthCommand}"></MenuItem>
+                <MenuItem Header="Year" Command="{Binding YearCommand}"></MenuItem>
+                <MenuItem Header="All" Command="{Binding AllCommand}"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Transactions" Click="TransactionButton_Click">
+                <MenuItem.Icon>
+                    <Image  Source="pack://application:,,,/View/images/transactions.png" Stretch="Fill"  />
+                </MenuItem.Icon>
+                
+            </MenuItem>
+            <Menu.Triggers>
+                <EventTrigger RoutedEvent="Mouse.MouseLeave">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard Name="menuCloseStoryBoard">
+                            <Storyboard  Timeline.DesiredFrameRate="60">
+                                <DoubleAnimation Storyboard.TargetName="myMenu" From="220" To="0"
+                                                      DecelerationRatio="1" Duration="0:0:0:0.3"
+                                                     Storyboard.TargetProperty="Width" />
+
+
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </Menu.Triggers>
+        </Menu>
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="0.2*"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="0.2*"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="0.2*"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="0.5*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="Phone" Click="Button_Click"  Background="Transparent" BorderBrush="Transparent" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave"  Grid.Column="1" Grid.Row="0"  HorizontalAlignment="Center" BorderThickness="0">
+                <Image Source="pack://application:,,,/View/images/phone.png"></Image>
+            </Button>
+            <Button x:Name="Transport" Click="Button_Click" Background="Transparent" BorderBrush="Transparent"  MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" Grid.Column="2" Grid.Row="0"  HorizontalAlignment="Center" BorderThickness="0">
+                <Image Source="pack://application:,,,/View/images/transport.png"></Image>
+            </Button>
+            <Button x:Name="House" Click="Button_Click" Background="Transparent" BorderBrush="Transparent"  MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" Grid.Column="3" Grid.Row="0" HorizontalAlignment="Center" BorderThickness="0">
+                <Image Source="pack://application:,,,/View/images/house.png"></Image>
+            </Button>
+            <Button x:Name="Car" Click="Button_Click" Background="Transparent" BorderBrush="Transparent"  MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" Grid.Column="4" Grid.Row="0" HorizontalAlignment="Center" BorderThickness="0">
+                <Image Source="pack://application:,,,/View/images/car.png"></Image>
+            </Button>
+
+            <Button x:Name="Entertainment" Click="Button_Click" Background="Transparent" BorderBrush="Transparent"  MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" BorderThickness="0">
+                <Image Source="pack://application:,,,/View/images/entertainment.png"></Image>
+            </Button>
+            <Button x:Name="Taxi" Click="Button_Click"  Background="Transparent" BorderBrush="Transparent" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Center" BorderThickness="0">
+                <Image Source="pack://application:,,,/View/images/taxi.png"></Image>
+            </Button>
+            <Button x:Name="Clothes" Click="Button_Click"  Background="Transparent" BorderBrush="Transparent" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" Grid.Column="1" Grid.Row="6" HorizontalAlignment="Center" BorderThickness="0">
+                <Image Source="pack://application:,,,/View/images/clothes.png"></Image>
+            </Button>
+            <Button x:Name="Health" Click="Button_Click"  Background="Transparent" BorderBrush="Transparent" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" Grid.Column="2" Grid.Row="6" HorizontalAlignment="Center" BorderThickness="0">
+                <Image Source="pack://application:,,,/View/images/health.png"></Image>
+            </Button>
+            <Button x:Name="Sport" Click="Button_Click"  Background="Transparent" BorderBrush="Transparent" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" Grid.Column="3" Grid.Row="6" HorizontalAlignment="Center" BorderThickness="0">
+                <Image Source="pack://application:,,,/View/images/sport.png"></Image>
+            </Button>
+            <Button x:Name="Food" Click="Button_Click"  Background="Transparent" BorderBrush="Transparent" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" Grid.Column="4" Grid.Row="6" HorizontalAlignment="Center" BorderThickness="0">
+                <Image Source="pack://application:,,,/View/images/food.png"></Image>
+            </Button>
+            <Button x:Name="Toiletry" Click="Button_Click"  Background="Transparent" BorderBrush="Transparent" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" Grid.Column="4" Grid.Row="4" HorizontalAlignment="Center" BorderThickness="0">
+                <Image Source="pack://application:,,,/View/images/toiletry.png"></Image>
+            </Button>
+            <Button x:Name="Restaurants" Click="Button_Click"  Background="Transparent" BorderBrush="Transparent" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" Grid.Column="4" Grid.Row="2" HorizontalAlignment="Center" BorderThickness="0">
+                <Image Source="pack://application:,,,/View/images/restaurants.png"></Image>
+            </Button>
+            <Grid  Grid.Row="1" Grid.Column="2" Grid.RowSpan="4" Grid.ColumnSpan="2">
+                <lvc:PieChart Hoverable="True" InnerRadius="0" Series="{Binding SeriesColl}" >
+                </lvc:PieChart>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="1.5*"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="1.8*"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="8*"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Button Name="minus" Grid.Column="1" Style="{StaticResource RedButton}" Click="Button_Click" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave"  Content="-" Foreground="Red" FontSize="30"  Grid.Row="1"></Button>
+
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="5*"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="6*"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Column="1" Grid.Row="1"  Background="#FFBCBC" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition Height="2*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0" Orientation="Horizontal"  >
+                        <Label Content="Incomes:"  Foreground="Green" FontSize="12"  VerticalAlignment="Center" ></Label>
+                        <Label Content="{Binding Currency}"  Foreground="Green" FontSize="12"  VerticalAlignment="Center"  ></Label>
+                        <Label Content="{Binding TotalIncomes}" Foreground="Green"  VerticalAlignment="Center" ></Label>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="1" Orientation="Horizontal"  >
+                        <Label Content="Expences:" Foreground="Red" FontSize="12" VerticalAlignment="Center" ></Label>
+                        <Label Content="{Binding Currency}" Foreground="Red" FontSize="12" VerticalAlignment="Center" ></Label>
+                        <Label  Content="{Binding TotalExpenses}" Foreground="Red"  VerticalAlignment="Center" ></Label>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="2" Orientation="Horizontal"   >
+                        <Label Content="Balance:"  Foreground="White" FontSize="25"  VerticalAlignment="Center"  ></Label>
+                        <Label Content="{Binding Currency}"  Foreground="White" FontSize="25"  VerticalAlignment="Center"  ></Label>
+                        <Label Content="{Binding TotalValue}" Foreground="White" FontSize="25"  VerticalAlignment="Center"  ></Label>
+                    </StackPanel>
+                    
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="1.8*"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="8*"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Button Name="income" Grid.Column="1" Style="{StaticResource GreenButton}" Click="Button_Click" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave"  Content="+" Foreground="Green" FontSize="30"  Grid.Row="1"></Button>
+
+            </Grid>
+        </Grid>
+
+    </Grid>
+</Window>
